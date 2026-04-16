@@ -4,7 +4,7 @@ import { Accessibility, Hospital, Glasses } from "lucide-react";
 const useCases = [
   { icon: Accessibility, title: "Accessibility", desc: "Empowers users with limited mobility to type effortlessly." },
   { icon: Hospital, title: "Sterile Environments", desc: "Ideal for hospitals and labs where touchless input is essential." },
-  { icon: Glasses, title: "AR & VR", desc: "A natural fit for augmented and virtual reality interfaces." },
+  { icon: Glasses, title: "AR Interfaces", desc: "A natural fit for augmented reality interfaces." },
 ];
 
 const fadeUp = {
