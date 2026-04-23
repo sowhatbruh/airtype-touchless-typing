@@ -1,29 +1,8 @@
-import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Download, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-image.jpg";
-
-const DOWNLOAD_URL =
-  "https://github.com/sowhatbruh/airtype-touchless-typing/releases/download/v1.0/AirType.exe";
-
-const handleDownload = async (e: MouseEvent) => {
-  e.preventDefault();
-  try {
-    const res = await fetch(DOWNLOAD_URL);
-    const blob = await res.blob();
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "AirType.exe";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-  } catch {
-    window.location.href = DOWNLOAD_URL;
-  }
-};
+import { DOWNLOAD_URL, triggerDownload } from "@/lib/download";
 
 const HeroSection = () => (
   <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
@@ -56,7 +35,7 @@ const HeroSection = () => (
 
           <div className="flex flex-wrap gap-4">
             <Button size="lg" asChild>
-              <a href={DOWNLOAD_URL} download="AirType.exe" onClick={handleDownload}>
+              <a href={DOWNLOAD_URL} download="AirType.exe" onClick={triggerDownload}>
                 <Download className="w-5 h-5 mr-2" />
                 Download for Windows
               </a>

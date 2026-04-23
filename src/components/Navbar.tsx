@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DOWNLOAD_URL, triggerDownload } from "@/lib/download";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -33,7 +34,7 @@ const Navbar = () => {
             </a>
           ))}
           <Button size="sm" asChild>
-            <a href="#download">
+            <a href={DOWNLOAD_URL} download="AirType.exe" onClick={triggerDownload}>
               <Download className="w-4 h-4 mr-2" />
               Download
             </a>
@@ -67,7 +68,14 @@ const Navbar = () => {
                 </a>
               ))}
               <Button size="sm" asChild>
-                <a href="#download" onClick={() => setOpen(false)}>
+                <a
+                  href={DOWNLOAD_URL}
+                  download="AirType.exe"
+                  onClick={(e) => {
+                    setOpen(false);
+                    triggerDownload(e);
+                  }}
+                >
                   <Download className="w-4 h-4 mr-2" />
                   Download
                 </a>

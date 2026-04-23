@@ -1,28 +1,7 @@
-import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Download, Shield, Monitor, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const DOWNLOAD_URL =
-  "https://github.com/sowhatbruh/airtype-touchless-typing/releases/download/v1.0/AirType.exe";
-
-const handleDownload = async (e: MouseEvent) => {
-  e.preventDefault();
-  try {
-    const res = await fetch(DOWNLOAD_URL);
-    const blob = await res.blob();
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "AirType.exe";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-  } catch {
-    window.location.href = DOWNLOAD_URL;
-  }
-};
+import { DOWNLOAD_URL, triggerDownload } from "@/lib/download";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -48,7 +27,7 @@ const DownloadSection = () => (
 
         <motion.div variants={fadeUp} custom={3}>
           <Button size="lg" className="text-base px-8 py-6 h-auto" asChild>
-            <a href={DOWNLOAD_URL} download="AirType.exe" onClick={handleDownload}>
+            <a href={DOWNLOAD_URL} download="AirType.exe" onClick={triggerDownload}>
               <Download className="w-5 h-5 mr-2" />
               Download AirType.exe
             </a>
