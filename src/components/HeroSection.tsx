@@ -7,12 +7,12 @@ import { DOWNLOAD_URL, triggerDownload } from "@/lib/download";
 const HeroSection = () => (
   <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
     {/* Subtle grid bg */}
-    <div className="absolute inset-0 opacity-[0.03]" style={{
+    <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
       backgroundImage: "radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)",
       backgroundSize: "40px 40px",
     }} />
 
-    <div className="container mx-auto px-4 lg:px-8">
+    <div className="relative z-10 container mx-auto px-4 lg:px-8">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -34,11 +34,9 @@ const HeroSection = () => (
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <Button size="lg" asChild>
-              <a href={DOWNLOAD_URL} download="AirType.exe" onClick={triggerDownload}>
+            <Button size="lg" type="button" onClick={triggerDownload}>
                 <Download className="w-5 h-5 mr-2" />
                 Download for Windows
-              </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
               <a href="#how-it-works">
