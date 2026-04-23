@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Download, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,7 +7,7 @@ import heroImage from "@/assets/hero-image.jpg";
 const DOWNLOAD_URL =
   "https://github.com/sowhatbruh/airtype-touchless-typing/releases/download/v1.0/AirType.exe";
 
-const handleDownload = async (e: React.MouseEvent) => {
+const handleDownload = async (e: MouseEvent) => {
   e.preventDefault();
   try {
     const res = await fetch(DOWNLOAD_URL);
