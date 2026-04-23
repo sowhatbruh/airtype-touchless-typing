@@ -34,7 +34,10 @@ const HeroSection = () => (
 
           <div className="flex flex-wrap gap-4">
             <Button size="lg" asChild>
-              <a href="#download">
+              <a
+                href="https://github.com/sowhatbruh/airtype-touchless-typing/releases/download/v1.0/AirType.exe"
+                download
+              >
                 <Download className="w-5 h-5 mr-2" />
                 Download for Windows
               </a>

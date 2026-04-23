@@ -26,7 +26,10 @@ const DownloadSection = () => (
 
         <motion.div variants={fadeUp} custom={3}>
           <Button size="lg" className="text-base px-8 py-6 h-auto" asChild>
-            <a href="#" onClick={(e) => e.preventDefault()}>
+            <a
+              href="https://github.com/sowhatbruh/airtype-touchless-typing/releases/download/v1.0/AirType.exe"
+              download
+            >
               <Download className="w-5 h-5 mr-2" />
               Download AirType.exe
             </a>
