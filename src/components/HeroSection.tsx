@@ -1,10 +1,18 @@
+import { type MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Download, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-image.jpg";
+import { downloadAsset, windowsDownloadFilename, windowsDownloadUrl } from "@/lib/utils";
 
-const HeroSection = () => (
-  <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+const HeroSection = () => {
+  const handleDownload = async (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    await downloadAsset(windowsDownloadUrl, windowsDownloadFilename);
+  };
+
+  return (
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
     {/* Subtle grid bg */}
     <div className="absolute inset-0 opacity-[0.03]" style={{
       backgroundImage: "radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)",
@@ -34,7 +42,7 @@ const HeroSection = () => (
 
           <div className="flex flex-wrap gap-4">
             <Button size="lg" asChild>
-              <a href="#download">
+              <a href={windowsDownloadUrl} download={windowsDownloadFilename} onClick={handleDownload}>
                 <Download className="w-5 h-5 mr-2" />
                 Download for Windows
               </a>

@@ -1,14 +1,22 @@
+import { type MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Download, Shield, Monitor, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { downloadAsset, windowsDownloadFilename, windowsDownloadUrl } from "@/lib/utils";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.12, duration: 0.5 } }),
 };
 
-const DownloadSection = () => (
-  <section id="download" className="py-20 md:py-28">
+const DownloadSection = () => {
+  const handleDownload = async (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    await downloadAsset(windowsDownloadUrl, windowsDownloadFilename);
+  };
+
+  return (
+    <section id="download" className="py-20 md:py-28">
     <div className="container mx-auto px-4 lg:px-8">
       <motion.div
         initial="hidden"
@@ -26,7 +34,11 @@ const DownloadSection = () => (
 
         <motion.div variants={fadeUp} custom={3}>
           <Button size="lg" className="text-base px-8 py-6 h-auto" asChild>
-            <a href="#" onClick={(e) => e.preventDefault()}>
+            <a
+              href={windowsDownloadUrl}
+              download={windowsDownloadFilename}
+              onClick={handleDownload}
+            >
               <Download className="w-5 h-5 mr-2" />
               Download AirType.exe
             </a>
