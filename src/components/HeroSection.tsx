@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { Download, ArrowDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-image.jpg";
-import { windowsDownloadFilename, windowsDownloadUrl } from "@/lib/utils";
 
 const HeroSection = () => (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
@@ -34,17 +33,6 @@ const HeroSection = () => (
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <Button size="lg" asChild>
-              <a
-                href={windowsDownloadUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-                download={windowsDownloadFilename}
-              >
-                <Download className="w-5 h-5 mr-2" />
-                Download for Windows
-              </a>
-            </Button>
             <Button variant="outline" size="lg" asChild>
               <a href="#how-it-works">
                 Learn How It Works
